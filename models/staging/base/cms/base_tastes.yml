@@ -1,0 +1,168 @@
+version: 2
+
+sources:
+  - name: public
+    description: The Panoply CMS data for TOC
+    tables:
+      - name: tastes_orders
+        description: CMS order data - one order per row
+        columns:
+          - name: id
+            description: Unique order ID associated with order
+            tests:
+            - unique
+            - not_null
+          - name: __updatetime
+          - name: customer_id
+            description: Customer ID associated with customer who placed order
+          - name: __file_name
+          - name: address1
+            description: Billing address
+          - name: zip
+            description: Billing zip
+          - name: order_date
+            description: Order date
+          - name: __s3_bucket
+          - name: state
+            description: Billing state
+          - name: order_src
+            description: Numerical code that identifies the order source
+          - name: city
+            description: Billing city
+          - name: cancelled
+            description: True/false indicator of whether or not an order was cancelled
+          - name: reforderid
+            description: Order ID linked to IMM Orders, may be null
+          - name: __s3key
+          - name: address2
+            description: Billing address 2, may be null
+          - name: adcode
+            description: Adcode used when order was placed, may be null
+          - name: __senttime
+          - name: item_total
+            description: Total cost of items in order
+          - name: discount_amount
+            description: Total discount, if applicable
+          - name: shipping
+            description: Total cost of shipping, if applicable
+          - name: state_tax
+            description: Total state tax, if applicable
+          - name: order_total
+            description: Total cost of order, which should equate to item_total - discount + shipping + state_tax
+      - name: tastes_customers
+        description: CMS customer data - one customer per row
+        columns:
+          - name: id
+            description: Unique customer ID associated with customer who placed order
+            tests:
+            - unique
+            - not_null
+          - name: __updatetime
+          - name: last_name
+            description: Last name of customer
+          - name: phone
+            description: Phone number of customer, may be null
+          - name: __filename
+          - name: __s3bucket
+          - name: __s3key
+          - name: first_name
+            description: First name of customer
+          - name: email
+            description: Email address of customer
+          - name: company
+            description: Company of customer, may be null
+          - name: __senttime
+      - name: tastes_shipments
+        description: CMS shipment data - one shipment per row
+        columns:
+          - name: id
+            description: Unique shipping ID associated with order
+            tests:
+            - unique
+            - not_null
+          - name: __updatetime
+          - name: address_id
+            description: (?)
+          - name: address1
+            description: Shipping address, may be multiple per order
+          - name: zip
+            description: Shipping zip code
+          - name: gifted
+            description: Boolean indicator of whether an order is a gift based on whether or not the order includes a gift message
+          - name: address2
+            description: Shipping address 2, may be null
+          - name: sel_letter
+            description: Three letter shipping code
+          - name: track_num
+            description: Tracking number of shipment
+          - name: __s3bucket
+          - name: __s3key
+          - name: order_id
+            description: Order ID associated with order
+          - name: city
+            description: Shipping city
+          - name: state
+            description: Shipping state
+          - name: ship_date
+            description: Date an order is shipped
+          - name: reforderid
+            description: Order ID linked to IMM Orders, may be null
+          - name: __filename
+          - name: __senttime
+      - name: imm_media_attributed_orders
+        description: IMM order IDs - order IDs generated when an order is attributed to paid media
+        columns:
+          - name: id
+            description: Unique ID associated with media attributed order ID
+            tests:
+            - unique
+            - not_null
+          - name: __updatetime
+          - name: __filename
+          - name: __s3bucket
+          - name: __s3key
+          - name: media_attributed_order_id
+            description: Otherwise known as reforderid - Order ID linked to IMM Orders
+          - name: placement_name
+            description: Indicator of where the customer was exposed to the media leading to the order
+          - name: __senttime
+          - name: conversion_ts
+      - name: order_src_codes
+        description: Order source names and numerical codes that indicates where an order was sourced/placed/received
+        columns:
+          - name: id
+            description: Unique ID associated with order source codes
+            tests:
+            - unique
+            - not_null
+          - name: __updatetime
+          - name: ordersrc_id
+            description: Numerical code that identifies the order source
+          - name: name
+            description: Full name that identifies the order source
+          - name: __state
+          - name: __senttime
+      - name: reforecast
+        description: Values pulled from the approved 2022 TOC Budget including adjustments for growth initiatives
+        columns:
+          - name: cohort
+            description: The classification of customers who made their first purchase in the given year
+          - name: revenue_group
+            description: The revenue group that the customer made their first purchase from
+          - name: revenue_segment
+            description: The revenue segment that the customer made their first purchase from
+          - name: period
+            description: The 2022 fiscal period that the forecast is predicting for
+          - name: forecast_by_period
+            description: The predicted revenue for the fiscal period
+          - name: forecast_by_week
+            description: The predicted revenue for the fiscal week which is computed by dividing forecast_by_period by four
+          - name: forecast_by_day
+            description: The predicted revenue for the fiscal day which is computed by dividing forecast_by_week by seven
+      - name: tastes_order_items
+      - name: products
+      - name: sku_code_translation
+      - name: sku_code_mismatches
+      - name: sheets_imm_raw_data_imm-media_superset_20220331_imm_raw_data_imm-media_superset_20220331
+      - name: sheets_imm_creative_raw_data-supersetimport_20220331_imm_creative_raw_data-supersetimport_20220331
+      - name: april_reforecast

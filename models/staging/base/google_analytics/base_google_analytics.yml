@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: fivetran_google_analytics
+    description: The Panoply Google Analytics data for TOC
+    tables:
+      - name: overview
