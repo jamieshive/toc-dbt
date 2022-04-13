@@ -1,0 +1,130 @@
+version: 2
+
+models:
+    - name: customers_grouped
+      description: A table of customer information that includes date related calculations and transformations
+      columns:
+        - name: customer_id
+          description: Unique customer ID associated with customer 
+        - name: first_name
+          description: First name of customer
+        - name: last_name
+          description: Last name of customer
+        - name: phone
+          description: Phone number of customer, may be null
+        - name: company
+          description: Company of customer, may be null
+        - name: number_of_orders
+          description: Number of orders placed by a customer to date
+        - name: cohort
+          description: The Cohort a customer belongs to -- the year in which they made their first purchase (ex. the 2020 cohort)
+        - name: first_event_on
+          description: The first date that a customer placed an order
+        - name: first_event_fiscal_period
+          description: The fiscal period of the first event date
+        - name: first_event_fiscal_year_period
+          description: The fiscal year and period of the first event date
+        - name: first_event_fiscal_year_period_week
+          description: The fiscal year, period, and week of the first event date
+        - name: most_recent_event_on
+          description: The most recent date that a customer placed an order
+    
+    - name: shipments_filtered
+      description: The shipments table with date related transformations
+      columns:
+        - name: shipping_id
+          description: Unique shipping ID associated with order
+        - name: order_id
+          description: Order ID associated with order
+        - name: media_id
+          description: Order ID linked to IMM Orders, may be null
+        - name: address_id
+          description: (?)
+        - name: shipping_address1
+          description: Shipping address, may be multiple per order
+        - name: shipping_address2
+          description: Shipping address 2, may be null
+        - name: shipping_city
+          description: Shipping city
+        - name: shipping_state
+          description: Shipping state
+        - name: shipping_zip
+          description: Shipping zip code
+        - name: sel_letter
+          description: Three letter shipping code
+        - name: track_num
+          description: Tracking number of shipment
+        - name: was_gifted
+          description: Boolean indicator of whether an order is a gift based on whether or not the order includes a gift message
+        - name: shipped_on
+          description: Date an order is shipped
+        - name: shipped_date_fiscal_period
+          description: The fiscal period of the shipping date
+        - name: shipped_date_fiscal_year_period
+          description: The fiscal year and period of the shipping date
+        - name: shipped_date_fiscal_year_period_week
+          description: The fiscal year, period, and week of the shipping date
+    
+    - name: orders_joined
+      description: The orders table with paid media indicators and date related transformations
+      columns:
+        - name: order_id
+          description: Unique order ID associated with order
+        - name: media_id
+          description: Order ID linked to IMM Orders, may be null
+        - name: customer_id
+          description: Customer ID associated with customer who placed order
+        - name: item_total
+          description: Total cost of items in order
+        - name: shipping_total
+          description: Total cost of shipping, if applicable
+        - name: discount_total
+          description: Total discount, if applicable
+        - name: state_tax_total
+          description: Total state tax, if applicable
+        - name: order_total
+          description: Total cost of order, which should equate to item_total - discount + shipping + state_tax
+        - name: billing_address1
+          description: Billing address
+        - name: billing_address2
+          description: Billing address 2, may be null
+        - name: billing_city
+          description: Billing city
+        - name: billing_state
+          description: Billing state
+        - name: billing_zip
+          description: Billing zip
+        - name: order_src
+          description: Numerical code that identifies the order source
+        - name: adcode
+          description: Adcode used when order was placed, may be null
+        - name: was_cancelled
+          description: True/false indicator of whether or not an order was cancelled
+        - name: ordered_on
+          description: Order date
+        - name: order_attribution
+          description: Whether or not the order is associated with paid media (If so, "Paid", and if not, "Organic")
+        - name: order_source_name
+          description: Full name that identifies the order source
+        - name: order_date_fiscal_period
+          description: The fiscal period of the order date
+        - name: order_date_fiscal_year_period
+          description: The fiscal year and period of the order date
+        - name: order_date_fiscal_year_period_week
+          description: The fiscal year, period, and week of the order date
+
+    - name: paid_media
+      description: Data related exclusively to paid media orders
+      columns:
+        - name: imm_id
+          description: Unique identifier
+        - name: ordered_on
+          description: Date of purchase
+        - name: media_id
+          description: Order ID linked to IMM Orders, may be null
+        - name: placement_name
+          description: key that describes how order was obtained through media
+        - name: is_new_customer
+          description: Y/N indicator that indicates whether the media ID is associated with a new customer or not
+
+        

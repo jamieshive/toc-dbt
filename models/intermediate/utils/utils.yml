@@ -1,0 +1,24 @@
+version: 2
+
+models:
+    - name: utils_calendar__created
+      description: The fiscal calendar used for TOC
+      columns:
+        - name: date_day
+          description: Full date of form YYYY-MM-DD
+        - name: day_of_week
+          description: Numerical day of week of the given date, a number between 1 and 7
+        - name: fiscal_period
+          description: The fiscal period of the given date, between P01 and P13
+        - name: year_period
+          description: The year and fiscal period of the given date
+        - name: year_period_week
+          description: The year, fiscal period, and fiscal week (between W1 and W4) of the given date
+    - name: utils_cohorts__repurchase
+      description: The table used to compute base repurchase rates for each cohort
+    - name: utils_cohorts__retained
+      description: The table used to compute base retention rates for each cohort
+    - name: utils_cohorts__joined
+      description: The table that joins the repurchase and retention rates for each cohort
+    - name: utils_cohorts__seasoned
+      description: The table used to compute base seasonality rates for each cohort
