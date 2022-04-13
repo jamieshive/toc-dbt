@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: public
+    description: The Panoply BigC data for TOC
+    tables:
+      - name: bigc_tastes_of_chicago_orders
+      - name: bigc_tastes_of_chicago_customers
+      - name: bigc_tastes_of_chicago_order_shipments
+      - name: bigc_tastes_of_chicago_order_shipments_billing_address
+      - name: bigc_tastes_of_chicago_order_shipments_shipping_address
