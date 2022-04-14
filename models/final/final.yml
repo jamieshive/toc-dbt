@@ -1,7 +1,7 @@
 version: 2
 
 models:
-    - name: depr_orders__flattened
+    - name: orders__flattened
       description: A flattened table of all order, customer, and shipment info (used in GoodData and will be deprecated)
       columns:
         - name: order_id
@@ -234,3 +234,10 @@ models:
           description: The forecasted value (run rate with growth initiatives) for the given week
         - name: forecast_by_day
           description: The forecasted value (run rate with growth initiatives) for the given day
+    - name: prod_facebook_ads__flattened
+    - name: prod_google_ads__flattened
+    - name: prod_google_analytics__flattened
+    - name: prod_microsoft_ads__flattened
+    - name: prod_paid_media__flattened
+    - name: prod_products__test
+    - name: prod_shipments__flattened

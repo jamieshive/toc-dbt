@@ -1,7 +1,7 @@
 version: 2
 
 models:
-    - name: customers_grouped
+    - name: int_customers_grouped
       description: A table of customer information that includes date related calculations and transformations
       columns:
         - name: customer_id
@@ -29,7 +29,7 @@ models:
         - name: most_recent_event_on
           description: The most recent date that a customer placed an order
     
-    - name: shipments_filtered
+    - name: int_shipments_filtered
       description: The shipments table with date related transformations
       columns:
         - name: shipping_id
@@ -65,7 +65,7 @@ models:
         - name: shipped_date_fiscal_year_period_week
           description: The fiscal year, period, and week of the shipping date
     
-    - name: orders_joined
+    - name: int_orders_joined
       description: The orders table with paid media indicators and date related transformations
       columns:
         - name: order_id
@@ -112,19 +112,6 @@ models:
           description: The fiscal year and period of the order date
         - name: order_date_fiscal_year_period_week
           description: The fiscal year, period, and week of the order date
-
-    - name: paid_media
-      description: Data related exclusively to paid media orders
-      columns:
-        - name: imm_id
-          description: Unique identifier
-        - name: ordered_on
-          description: Date of purchase
-        - name: media_id
-          description: Order ID linked to IMM Orders, may be null
-        - name: placement_name
-          description: key that describes how order was obtained through media
-        - name: is_new_customer
-          description: Y/N indicator that indicates whether the media ID is associated with a new customer or not
-
+    - name: int_google_analytics_joined
+    - name: int_products__categorized
         

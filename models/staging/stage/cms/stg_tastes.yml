@@ -1,7 +1,7 @@
 version: 2
 
 models:
-    - name: stg_tastes__customers
+    - name: stg_cms__customers
       description: The staged version of the customers base table
       columns:
         - name: customer_id
@@ -16,7 +16,7 @@ models:
           description: Company of customer, may be null
           
 
-    - name: stg_tastes__media_attributed_orders
+    - name: stg_imm__media_attributed_orders
       description: The staged version of the IMM media orders base table
       columns:
         - name: imm_id
@@ -24,7 +24,7 @@ models:
         - name: media_id
           description: Unique Order ID generated when an order is attributed to paid media
     
-    - name: stg_tastes__order_source_codes
+    - name: stg_cms__order_source_codes
       description: The staged version of the order source code base table
       columns:
         - name: order_source_number
@@ -32,7 +32,7 @@ models:
         - name: order_source_name
           description: Full name that identifies the order source
     
-    - name: stg_tastes__orders
+    - name: stg_cms__orders
       description: The staged version of the orders base table
       columns:
         - name: order_id
@@ -70,7 +70,7 @@ models:
         - name: ordered_on
           description: Order date
     
-    - name: stg_tastes__shipments
+    - name: stg_cms__shipments
       description: The staged version of the shipments base table
       columns:
         - name: shipping_id
@@ -99,4 +99,9 @@ models:
           description: Boolean indicator of whether an order is a gift based on whether or not the order includes a gift message
         - name: shipped_on
           description: Date an order is shipped
-
+    - name: stg_cms__order_items
+    - name: stg_cms__product_code_translation
+    - name: stg_cms__sku_code_mismatches
+    - name: stg_csv__april_reforecast
+    - name: stg_imm__creative_raw_data
+    - name: stg_imm__raw_data

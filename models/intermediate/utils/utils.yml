@@ -14,11 +14,6 @@ models:
           description: The year and fiscal period of the given date
         - name: year_period_week
           description: The year, fiscal period, and fiscal week (between W1 and W4) of the given date
-    - name: utils_cohorts__repurchase
-      description: The table used to compute base repurchase rates for each cohort
-    - name: utils_cohorts__retained
-      description: The table used to compute base retention rates for each cohort
     - name: utils_cohorts__joined
-      description: The table that joins the repurchase and retention rates for each cohort
-    - name: utils_cohorts__seasoned
-      description: The table used to compute base seasonality rates for each cohort
+    - name: utils_cohorts__retained
+    - name: utils_cohorts_weighted
